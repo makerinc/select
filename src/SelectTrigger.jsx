@@ -8,6 +8,11 @@ import DropdownMenu from './DropdownMenu';
 
 Trigger.displayName = 'Trigger';
 
+const autoAdjustOverflow = {
+  adjustX: 1,
+  adjustY: 1,
+};
+
 const BUILT_IN_PLACEMENTS = {
   bottomLeft: {
     points: ['tl', 'bl'],
@@ -24,6 +29,26 @@ const BUILT_IN_PLACEMENTS = {
       adjustX: 0,
       adjustY: 1,
     },
+  },
+  topCenter: {
+    points: ['bc', 'tc'],
+    overflow: autoAdjustOverflow,
+    offset: [0, -4],
+  },
+  topRight: {
+    points: ['br', 'tr'],
+    overflow: autoAdjustOverflow,
+    offset: [0, -4],
+  },
+  bottomCenter: {
+    points: ['tc', 'bc'],
+    overflow: autoAdjustOverflow,
+    offset: [0, 4],
+  },
+  bottomRight: {
+    points: ['tr', 'br'],
+    overflow: autoAdjustOverflow,
+    offset: [0, 4],
   },
 };
 
@@ -171,7 +196,7 @@ export default class SelectTrigger extends React.Component {
         showAction={disabled ? [] : this.props.showAction}
         hideAction={hideAction}
         ref={this.saveTriggerRef}
-        popupPlacement="bottomLeft"
+        popupPlacement={this.props.popupPlacement || 'bottomLeft'}
         builtinPlacements={BUILT_IN_PLACEMENTS}
         prefixCls={dropdownPrefixCls}
         popupTransitionName={this.getDropdownTransitionName()}

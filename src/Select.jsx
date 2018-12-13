@@ -1412,6 +1412,7 @@ class Select extends React.Component {
         menuItemSelectedIcon={props.menuItemSelectedIcon}
         dropdownRender={props.dropdownRender}
         ariaId={this.ariaId}
+        popupPlacement={this.props.popupPlacement}
       >
         <div
           id={props.id}
